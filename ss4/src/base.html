@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>React Samples</title>
+    </head>
+    <body>
+        <!-- 描画のルート -->
+        <div id="root"></div>
+
+        <!-- ReactとReactDOM (両方とも開発版) -->
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+        <script>
+            // ここにコードを書く
+            
+            // p.67より
+            //const bs = React.createElement("h1", { id: "recipe-0" }, "baked SAlmon");
+            //console.log(bs);
+
+            // p.68
+            //const dish = React.createElement("h1", null, "Baked Salmon");
+            //const dish = React.createElement("h1", { id:"recipe-0", aaa:"bbb" }, "Baked Salmon");
+            //ReactDOM.render(dish, document.getElementById("root"));
+
+            // p.69
+            //const dessert = React.createElement("h2", null, "Coconut Cream Pie");
+            //ReactDOM.render([dish, dessert], document.getElementById("root"));
+
+            // p.70
+            // const list = React.createElement(
+            //     "ul",
+            //     null,
+            //     //[ // 配列にすると、解釈はしてくれるがワーニングが出るから、よくないんだろう
+            //     React.createElement("li", null, "2 lb salmon"),
+            //     React.createElement("li", null, "5 sprights fresh rosemary"),
+            //     React.createElement("li", null, "2 tablespoons olive oil"),
+            //     React.createElement("li", null, "2 small lemons"),
+            //     React.createElement("li", null, "1 teaspoon cosher salt"),
+            //     React.createElement("li", null, "4 colves of chopped garlic")
+            //     //]
+            // ); // 配列のワーニング、p72に説明があった！
+            // console.log(list);
+            // ReactDOM.render(list, document.getElementById("root"));
+
+            // p.72
+            const items = [
+                "2 lb salmon",
+                "5 sprights fresh rosemary",
+                "2 tablespoons olive oil",
+                "2 small lemons",
+                "1 teaspoon cosher salt",
+                "4 colves of chopped garlic"
+            ];
+            // const list = React.createElement(
+            //     "ul",
+            //     null,
+            //     //items.map(item => React.createElement("li", null, item))
+            //         // key属性が（nullで）かぶるのでワーニングが出る
+            //     items.map((item, i) => React.createElement("li", {key: i}, item))
+            //         // keyにiを設定する. mapの第二引数はindex
+            // );
+            // console.log(list);
+            // ReactDOM.render(list, document.getElementById("root"));
+
+            // p74+p.76
+            function IngredientsList(props) {   // propsで受けている！
+                return React.createElement(
+                    "ul",
+                    { className: "ingredients" },
+                    // グローバル変数とローカル変数が同じ名前でややこしいので変えてみた
+                    props.local_items.map((item, i) =>
+                        React.createElement("li", {key:i}, item)
+                    )
+                )
+            }
+            ReactDOM.render(
+                React.createElement(IngredientsList, {local_items: items}, null),
+                document.getElementById("root")
+            );
+
+            // p.76のデストラクチャリング
+            function IngredientsList({local_items}) {
+                return React.createElement(
+                    "ul",
+                    { className: "ingredients" },
+                    // グローバル変数とローカル変数が同じ名前でややこしいので変えてみた
+                    local_items.map((item, i) =>
+                        React.createElement("li", {key:i}, item)
+                    )
+                )
+            }
+            ReactDOM.render(
+                React.createElement(IngredientsList, {local_items: items}, null),
+                document.getElementById("root")
+            );
+
+        </script>
+    </body>
+</html>
+
+
