@@ -65,20 +65,20 @@
             // ReactDOM.render(list, document.getElementById("root"));
 
             // p74+p.76
-            function IngredientsList(props) {   // propsで受けている！
-                return React.createElement(
-                    "ul",
-                    { className: "ingredients" },
-                    // グローバル変数とローカル変数が同じ名前でややこしいので変えてみた
-                    props.local_items.map((item, i) =>
-                        React.createElement("li", {key:i}, item)
-                    )
-                )
-            }
-            ReactDOM.render(
-                React.createElement(IngredientsList, {local_items: items}, null),
-                document.getElementById("root")
-            );
+            // function IngredientsList(props) {   // propsで受けている！
+            //     return React.createElement(
+            //         "ul",
+            //         { className: "ingredients" },
+            //         // グローバル変数とローカル変数が同じ名前でややこしいので変えてみた
+            //         props.local_items.map((item, i) =>
+            //             React.createElement("li", {key:i}, item)
+            //         )
+            //     )
+            // }
+            // ReactDOM.render(
+            //     React.createElement(IngredientsList, {local_items: items}, null),
+            //     document.getElementById("root")
+            // );
 
             // p.76のデストラクチャリング
             function IngredientsList({local_items}) {
