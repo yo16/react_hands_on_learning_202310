@@ -108,6 +108,28 @@
                 document.getElementById("root")
             );
 
+
+            // p.90
+            // 上のコードは上書きされるから無視する
+            function Cat({ name }) {
+                // return (
+                //     <React.Fragment>
+                //         <h1>The cat's name is {name}</h1>
+                //         <p>He's good.</p>
+                //     </React.Fragment>
+                // );
+                return (
+                    <>
+                        <h1>The cat's name is {name}</h1>
+                        <p>He's good.</p>
+                    </>
+                );
+            }
+            ReactDOM.render(
+                <Cat name="Jungle" />,
+                document.getElementById("root")
+            )
+
         </script>
     </body>
 </html>
